@@ -1,15 +1,22 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Freelancer</title>
-</head>
-<body>
+<x-app-layout>
     <div>
-        Hello World
+        <section class="text-center pt-6" id="entry">
+            <div class="mt-10 text-center" >
+                <h1>We are offering a solution to your problems</h1>
+            </div>
+        </section>
+
+        {{--    TODO use css to put icon inside input field    --}}
+        <section class="text-center pt-6">
+            <div class="flex items-center justify-items-center justify-center">
+                <input name="searchbar" class="rounded-xl bg-blue-700/5 border-blue-800/25 px-5 py-4 w-full max-w-2xl" placeholder="Search..."/>
+                <button><x-emblem-search-circle-fill class="w-10 h-10" /></button>
+            </div>
+        </section>
+
+        {{--  TODO showcase offered services  --}}
+        {{--  TODO render reviews  --}}
+        {{--  TODO last words like why this website particularly  --}}
+        {{--  TODO footer  --}}
     </div>
-</body>
-</html>
+</x-app-layout>
