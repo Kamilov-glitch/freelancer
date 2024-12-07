@@ -8,6 +8,7 @@
     "require": {
         "php": "^8.2",
         "codeat3/blade-emblemicons": "^1.4",
+        "faisal50x/blade-ionicons": "^1.0",
         "laravel/framework": "^11.31",
         "laravel/jetstream": "^5.3",
         "laravel/sanctum": "^4.0",
