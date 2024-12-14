@@ -2,19 +2,19 @@
     <button wire:click="scrollLeft">
         @svg('ionicon-arrow-back-circle-outline', 'w-20, h-20')
     </button>
-    <div>
+    <div class="{{ $cardIndex === 0 ? 'selected' : '' }} border-blue-800 border">
         <p>Review Card N1</p>
     </div>
-    <div class="selected">
+    <div class="{{ $cardIndex === 1 ? 'selected' : '' }} border-blue-800 border">
         <p>Review Card N2</p>
     </div>
-    <div>
+    <div class="{{ $cardIndex === 2 ? 'selected' : '' }} border-blue-800 border">
         <p>Review Card N3</p>
     </div>
-    <div>
+    <div class="{{ $cardIndex === 3 ? 'selected' : '' }} border-blue-800 border">
         <p>Review Card N4</p>
     </div>
-    <button wire:click="scrollLeft">
+    <button wire:click="scrollRight">
         @svg('ionicon-arrow-forward-circle-outline', 'w-20, h-20')
     </button>
 </div>
