@@ -6,7 +6,13 @@
     display: none;
 }
 
-.selected {
-    transform: scale(1.2);
-    transition: transform 0.3s ease-in-out;
+/* Add a smooth opacity fade for disappearing cards */
+.card {
+    opacity: 0;
+    transition: transform 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
+
+.card.visible {
+    opacity: 1;
+}
+

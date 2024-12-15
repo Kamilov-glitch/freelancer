@@ -1,29 +1,48 @@
-<div class="flex justify-between items-center">
-    <button wire:click="scrollLeft">
-        @svg('ionicon-arrow-back-circle-outline', 'w-20, h-20')
+<div x-data="carousel({ totalCards: 4 })" class="flex justify-center items-center overflow-hidden relative w-full">
+    <!-- Left Button -->
+    <button @click="scrollLeft" class="absolute left-0 z-10">
+        @svg('ionicon-arrow-back-circle-outline', 'w-20 h-20')
     </button>
-    <div class="{{ $cardIndex === 0 ? 'selected' : '' }} border-blue-800 border">
-        <p>Review Card N1</p>
+
+    <!-- Cards -->
+    <div class="flex items-center w-full justify-center relative h-64 bg-gray-100">
+        <template x-for="index in [...Array(totalCards).keys()]" :key="index">
+            <div class="transition-transform duration-500 ease-in-out absolute w-40 h-40 bg-blue-300 border-2 border-black flex items-center justify-center text-center text-black text-xl font-bold"
+                 :class="{
+            'translate-x-[-100%] opacity-0': index === leftIndex,
+            'translate-x-[0%] scale-125 z-20 opacity-100': index === currentIndex,
+            'translate-x-[100%] opacity-80 scale-100 z-10': index === rightIndex
+         }"
+                 x-text="'Review Card N' + (index + 1)">
+            </div>
+        </template>
     </div>
-    <div class="{{ $cardIndex === 1 ? 'selected' : '' }} border-blue-800 border">
-        <p>Review Card N2</p>
-    </div>
-    <div class="{{ $cardIndex === 2 ? 'selected' : '' }} border-blue-800 border">
-        <p>Review Card N3</p>
-    </div>
-    <div class="{{ $cardIndex === 3 ? 'selected' : '' }} border-blue-800 border">
-        <p>Review Card N4</p>
-    </div>
-    <button wire:click="scrollRight">
-        @svg('ionicon-arrow-forward-circle-outline', 'w-20, h-20')
+
+    <!-- Right Button -->
+    <button @click="scrollRight" class="absolute right-0 z-10">
+        @svg('ionicon-arrow-forward-circle-outline', 'w-20 h-20')
     </button>
 </div>
 
-{{--
-TODO
-we need to have one card in the middle focused and enlarged a bit
-the other two will stay by sides and gonna be a little smaller
-when we click on right the centered card will smothly transition to left
-get a bit smaller and the one on right will move to center and get enlarged
 
---}}
+<script>
+    function carousel({ totalCards }) {
+        return {
+            totalCards,
+            currentIndex: 0,
+            get leftIndex() {
+                return (this.currentIndex - 1 + this.totalCards) % this.totalCards;
+            },
+            get rightIndex() {
+                return (this.currentIndex + 1) % this.totalCards;
+            },
+            scrollLeft() {
+                this.currentIndex = this.leftIndex; // Move left
+            },
+            scrollRight() {
+                this.currentIndex = this.rightIndex; // Move right
+            },
+        };
+    }
+</script>
+
