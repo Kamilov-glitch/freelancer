@@ -9,9 +9,10 @@
         <template x-for="index in [...Array(totalCards).keys()]" :key="index">
             <div class="transition-transform duration-500 ease-in-out absolute w-40 h-40 bg-blue-300 border-2 border-black flex items-center justify-center text-center text-black text-xl font-bold"
                  :class="{
-            'translate-x-[-100%]': index === leftIndex,
+            'translate-x-[-120%] opacity-100 z-10': index === leftIndex,
             'translate-x-[0%] scale-125 z-20 opacity-100': index === currentIndex,
-            'translate-x-[100%] opacity-80 scale-100 z-10': index === rightIndex
+            'translate-x-[120%] opacity-80 scale-100 z-10': index === rightIndex,
+            'translate-x-[200%] opacity-0 z-0': index !== leftIndex && index !== currentIndex && index !== rightIndex
          }"
                  x-text="'Review Card N' + (index + 1)">
             </div>
